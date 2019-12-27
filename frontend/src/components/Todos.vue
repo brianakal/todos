@@ -5,25 +5,27 @@
             <button @click="addTask">Add Task</button>
         </div>
         <div>
-            <ul>
-                <li v-for="item in items" :key="item.id">
+            <b-list-group>
+                <b-list-group-item v-for="item in items" :key="item.id">
 
-                    <a href="#" v-if="item.done" @click="tombolSelesai(item)">✅</a>
-                    <a href="#" v-if="!item.done" @click="tombolSelesai(item)">🔲</a>
+                    <a href="#" v-if="item.done" @click="tombolSelesai(item)">✅</a> &nbsp;
+                    <a href="#" v-if="!item.done" @click="tombolSelesai(item)">🔲</a>  &nbsp;
 
                     <input type="text" v-model="editTask" v-if="editId === item.id">
-                    <span v-else>{{ item.name }}</span>
+                    <span v-else>{{ item.name }}</span> &nbsp;
 
                     <span v-if="!editId">
-                    <button @click="remove(item)">&times;</button>
-                    <button @click="edit(item)">Edit</button>
+                    <button @click="remove(item)">&times;</button> &nbsp;
+                    <button @click="edit(item)">Edit</button> &nbsp;
                     </span>
                     <span v-if="editId === item.id">
                     <button @click="update(item)">Update</button>
                     <button @click="cancel">Cancel</button>
                     </span>
-                </li>
-                </ul>
+                    <br />
+                    <br />
+                </b-list-group-item>
+               </b-list-group>
         </div>
     </div>
 </template>
@@ -119,3 +121,13 @@ export default {
 
 }
 </script>
+<style>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}#router-view {
+  padding: 20px 0px;
+  margin: 0 auto;
+}
+</style>

@@ -35,6 +35,7 @@ router.get('/', async (req, res, next) => {
     })
     res.json(result)
   });
+
   router.put('/setTask/:id', async (req, res, next) => {
       const result = await Tasks.update({
           name: req.body.name,
@@ -53,17 +54,17 @@ router.get('/', async (req, res, next) => {
         res.json(result)
     });
     
-    router.delete('/delTask/:id', async (req, res, next) => {
-      const result = await Tasks.destroy({
-          where: {
-              id: req.params.id
-            }
-      })
-      .catch ( error => {
-        res.status( 400 ).send(error)
-      })
-      res.json(result)
-    });
+router.delete('/delTask/:id', async (req, res, next) => {
+    const result = await Tasks.destroy({
+      where: {
+          id: req.params.id
+        }
+    })
+     .catch ( error => {
+      res.status( 400 ).send(error)
+    })
+    res.json(result)
+});
     
   
 module.exports = router;
